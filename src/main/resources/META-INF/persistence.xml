@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="HibernateJPA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>ru.kiasystems.model.entity.Theme</class>
+        <properties>
+            <property name="database.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistene.jdbc.url" value="jdbc:mysql://localhost:3306/kiasystems" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javx.persistence.jdbc.password" value="rootpass" />
+            <property name="dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.connectionCharset" value="utf-8" />
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="HibernateJPATest">
+        <class>ru.kiasystems.model.entity.Theme</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+    </persistence-unit>
+    </persistence>
