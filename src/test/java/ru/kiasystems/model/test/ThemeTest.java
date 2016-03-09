@@ -38,7 +38,7 @@ public class ThemeTest extends TestCase{
         // now lets pull events from the database and list them
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        List<Theme> result = entityManager.createQuery( "from Theme", Theme.class ).getResultList();
+        List<Theme> result = entityManager.createQuery( "select t from Theme t", Theme.class ).getResultList();
         for ( Theme event : result ) {
             System.out.println( "Theme (" + event.getStartDate() + ") : " + event.getTitle() );
         }
