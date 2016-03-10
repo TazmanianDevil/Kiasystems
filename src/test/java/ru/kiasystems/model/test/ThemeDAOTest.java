@@ -13,6 +13,7 @@ public class ThemeDAOTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         dao = new ThemeDAOImpl();
+        System.out.println("ТЕСТ ТЕСТ ТЕСТ");
     }
 
     @Override

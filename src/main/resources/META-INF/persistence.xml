@@ -10,8 +10,8 @@
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="rootpass" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
-            <property name="hibernate.connectionCharset" value="utf-8" />
-            <property name="connection.connectionCharset" value="utf-8"/>
+            <property name="hibernate.connection.charset" value="utf-8" />
+            <!--<property name="connection.connectionCharset" value="utf-8"/>-->
             <property name="hibernate.show_sql" value="true" />
         </properties>
     </persistence-unit>
@@ -24,6 +24,7 @@
             <property name="javax.persistence.jdbc.password" value="" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!--<property name="hibernate.connectionCharset" value="utf-8" />-->
         </properties>
     </persistence-unit>
 

@@ -20,6 +20,7 @@ public class ThemeTest extends TestCase{
         // 		IMPORTANT: notice how the name here matches the name we gave the persistence-unit in persistence.xml!
 
         entityManagerFactory = Persistence.createEntityManagerFactory( "HibernateJPATest" );
+        System.out.println("ThemeTEST ТЕСТ ТЕСТ ТЕСТ");
     }
 
     @Override
@@ -31,8 +32,8 @@ public class ThemeTest extends TestCase{
         // create a couple of events...
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist( new Theme( "Our very first event!", new Date() ) );
-        entityManager.persist( new Theme( "A follow up event", new Date() ) );
+        entityManager.persist( new Theme( "Event 1!", new Date() ) );
+        entityManager.persist( new Theme( "Event 2", new Date() ) );
         entityManager.getTransaction().commit();
         entityManager.close();
 

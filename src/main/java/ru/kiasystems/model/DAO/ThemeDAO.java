@@ -4,7 +4,7 @@ import ru.kiasystems.model.entity.Theme;
 import java.util.Collection;
 
 public interface ThemeDAO {
-    Collection getAllThemes();
+    Collection<Theme> getAllThemes();
     void addTheme(Theme theme);
     void updateTheme(Theme theme);
     Theme getThemeById(int id);
