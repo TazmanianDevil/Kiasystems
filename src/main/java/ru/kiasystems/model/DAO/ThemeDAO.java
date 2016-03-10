@@ -8,7 +8,7 @@ public interface ThemeDAO {
     void addTheme(Theme theme);
     void updateTheme(Theme theme);
     Theme getThemeById(int id);
-    void deleteTheme();
+    void deleteTheme(Theme theme);
 
 
 }

@@ -4,15 +4,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class HibernateUtils {
-    private static EntityManagerFactory entitytManagerFactory;
+    private static EntityManagerFactory entityManagerFactory;
 
-    public static EntityManagerFactory getEntitytManagerFactory() {
-        if (entitytManagerFactory == null) {
+    public static EntityManagerFactory getEntityManagerFactory() {
+        if (entityManagerFactory == null) {
             synchronized (HibernateUtils.class) {
-                if (entitytManagerFactory == null)
-                    entitytManagerFactory = Persistence.createEntityManagerFactory("HibernateJPA");
+                if (entityManagerFactory == null)
+                    entityManagerFactory = Persistence.createEntityManagerFactory("HibernateJPA");
             }
         }
-        return entitytManagerFactory;
+        return entityManagerFactory;
     }
 }

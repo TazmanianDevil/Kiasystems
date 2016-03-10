@@ -18,6 +18,7 @@ public class ThemeTest extends TestCase{
     protected void setUp() throws Exception {
         // like discussed with regards to SessionFactory, an EntityManagerFactory is set up once for an application
         // 		IMPORTANT: notice how the name here matches the name we gave the persistence-unit in persistence.xml!
+
         entityManagerFactory = Persistence.createEntityManagerFactory( "HibernateJPATest" );
     }
 
@@ -39,10 +40,12 @@ public class ThemeTest extends TestCase{
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         List<Theme> result = entityManager.createQuery( "select t from Theme t", Theme.class ).getResultList();
+
         for ( Theme event : result ) {
             System.out.println( "Theme (" + event.getStartDate() + ") : " + event.getTitle() );
         }
         entityManager.getTransaction().commit();
         entityManager.close();
+        System.out.println("ТЕСТЫ");
     }
 }

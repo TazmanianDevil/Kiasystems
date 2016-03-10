@@ -65,4 +65,8 @@ public class Theme {
     public void setCloseDate(Date closeDate) {
         this.closeDate = closeDate;
     }
+
+    public String toString() {
+        return "[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
+    }
 }

@@ -7,7 +7,9 @@
     <groupId>ru.kiasystems</groupId>
     <artifactId>Kia</artifactId>
     <version>1.0</version>
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -37,6 +39,7 @@
 
     </dependencies>
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -45,6 +48,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -62,6 +66,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>
