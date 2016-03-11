@@ -10,7 +10,7 @@ public class HibernateUtils {
         if (entityManagerFactory == null) {
             synchronized (HibernateUtils.class) {
                 if (entityManagerFactory == null)
-                    entityManagerFactory = Persistence.createEntityManagerFactory("HibernateJPA");
+                    entityManagerFactory = Persistence.createEntityManagerFactory("HibernateJPATest");
             }
         }
         return entityManagerFactory;

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table (name="themes")
+@NamedQuery(name = "Theme.getAllThemes", query = "SELECT t FROM Theme t")
 public class Theme {
     @Id
     @GeneratedValue
@@ -67,6 +68,6 @@ public class Theme {
     }
 
     public String toString() {
-        return "[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
+        return "Theme[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
     }
 }

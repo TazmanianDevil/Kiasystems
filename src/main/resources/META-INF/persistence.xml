@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="HibernateJPA">
+    <persistence-unit name="HibernateJPA" transaction-type="JTA">
+
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>ru.kiasystems.model.entity.Theme</class>
+        <jta-data-source>jdbc/Kia</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="database.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/kiasystems" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="rootpass" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
             <property name="hibernate.connection.charset" value="utf-8" />
-            <!--<property name="connection.connectionCharset" value="utf-8"/>-->
             <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
+            <property name="hibernate.classloading.use_current_tccl_as_parent" value="false" />
         </properties>
+
     </persistence-unit>
-    <persistence-unit name="HibernateJPATest">
-        <class>ru.kiasystems.model.entity.Theme</class>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
-            <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="javax.persistence.jdbc.password" value="" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
-            <!--<property name="hibernate.connectionCharset" value="utf-8" />-->
-        </properties>
-    </persistence-unit>
+
+    <!--<persistence-unit name="HibernateJPATest">-->
+        <!--<class>ru.kiasystems.model.entity.Theme</class>-->
+        <!--<properties>-->
+            <!--<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />-->
+            <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />-->
+            <!--<property name="javax.persistence.jdbc.user" value="sa" />-->
+            <!--<property name="javax.persistence.jdbc.password" value="" />-->
+            <!--<property name="hibernate.show_sql" value="true" />-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <!--&lt;!&ndash;<property name="hibernate.connectionCharset" value="utf-8" />&ndash;&gt;-->
+        <!--</properties>-->
+    <!--</persistence-unit>-->
 
     </persistence>

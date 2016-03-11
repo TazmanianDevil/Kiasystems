@@ -13,7 +13,7 @@ public class ThemeDAOTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         dao = new ThemeDAOImpl();
-        System.out.println("ТЕСТ ТЕСТ ТЕСТ");
+
     }
 
     @Override
@@ -34,11 +34,11 @@ public class ThemeDAOTest extends TestCase {
         t2.setStartDate(new Date());
         t2.setCloseDate(new Date());
         dao.addTheme(t2);
-        assertNotNull("id не может быть пустым", t2.getId());*/
+        assertNotNull("id не может быть пустым", t2.getId());
         Collection<Theme> themes = dao.getAllThemes();
         System.out.println(themes);
         System.out.println("ПРОВЕРКА КОДИРОВКИ!!!");
-        /*assertEquals(2, themes.size());
+        assertEquals(2, themes.size());
 
         t2.setTitle("New theme");
         dao.updateTheme(t2);
