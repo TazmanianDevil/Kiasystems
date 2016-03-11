@@ -19,18 +19,18 @@ public class ThemeTest extends TestCase{
         // like discussed with regards to SessionFactory, an EntityManagerFactory is set up once for an application
         // 		IMPORTANT: notice how the name here matches the name we gave the persistence-unit in persistence.xml!
 
-      /*  entityManagerFactory = Persistence.createEntityManagerFactory( "HibernateJPATest" );
-        System.out.println("ThemeTEST ТЕСТ ТЕСТ ТЕСТ");*/
+        entityManagerFactory = Persistence.createEntityManagerFactory( "HibernateJPATest" );
+
     }
 
     @Override
     protected void tearDown() throws Exception {
-       // entityManagerFactory.close();
+        entityManagerFactory.close();
     }
 
     public void testBasicUsage() {
         // create a couple of events...
-      /*  EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist( new Theme( "Event 1!", new Date() ) );
         entityManager.persist( new Theme( "Event 2", new Date() ) );
@@ -47,6 +47,6 @@ public class ThemeTest extends TestCase{
         }
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("ТЕСТЫ");*/
+
     }
 }

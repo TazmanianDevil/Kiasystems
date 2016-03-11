@@ -16,17 +16,17 @@
 
     </persistence-unit>
 
-    <!--<persistence-unit name="HibernateJPATest">-->
-        <!--<class>ru.kiasystems.model.entity.Theme</class>-->
-        <!--<properties>-->
-            <!--<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />-->
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />-->
-            <!--<property name="javax.persistence.jdbc.user" value="sa" />-->
-            <!--<property name="javax.persistence.jdbc.password" value="" />-->
-            <!--<property name="hibernate.show_sql" value="true" />-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
-            <!--&lt;!&ndash;<property name="hibernate.connectionCharset" value="utf-8" />&ndash;&gt;-->
-        <!--</properties>-->
-    <!--</persistence-unit>-->
+    <persistence-unit name="HibernateJPATest" transaction-type="RESOURCE_LOCAL">
+        <class>ru.kiasystems.model.entity.Theme</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!--<property name="hibernate.connectionCharset" value="utf-8" />-->
+        </properties>
+    </persistence-unit>
 
     </persistence>

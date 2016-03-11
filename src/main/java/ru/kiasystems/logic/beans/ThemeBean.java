@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import ru.kiasystems.model.entity.Theme;
 import java.util.List;
 @Stateless
-@Local
+//@Local
 public class ThemeBean {
     @PersistenceContext
     private EntityManager entityManager;
@@ -28,7 +28,7 @@ public class ThemeBean {
     }
 
     public String getName() {
-        return "Tra-ta-ta: " + entityManager;
+        return "ThemeBean";
     }
     public void addTheme(Theme theme) {
       //  entityManager.getTransaction().begin();
