@@ -1,15 +1,17 @@
 package ru.kiasystems.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 @Entity
 @Table (name="themes")
 @NamedQuery(name = "Theme.getAllThemes", query = "SELECT t FROM Theme t")
-public class Theme {
+public class Theme implements Serializable{
     @Id
     @GeneratedValue
     @Column(name="theme_id")
-    private int id;
+    private Integer id;
 
     @Column(name="title", nullable = false)
     private String title;
@@ -69,5 +71,16 @@ public class Theme {
 
     public String toString() {
         return "Theme[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj==null || !(obj instanceof Theme))
+            return false;
+        Theme theme = (Theme)obj;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return this.title == theme.getTitle() && sdf.format(this.startDate).equals(theme.getStartDate())
+                && this.closeDate == theme.getCloseDate();
     }
 }
