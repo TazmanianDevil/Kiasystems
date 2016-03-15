@@ -5,7 +5,6 @@ import ru.kiasystems.model.entity.Theme;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -13,9 +12,10 @@ import java.util.List;
 
 @Stateless
 @LocalBean
-public class ThemeEJB implements ThemeEJBRemote{
+public class ThemeEJB implements ThemeEJBRemote {
     @PersistenceContext
     private EntityManager entityManager;
+    @Override
     public List<Theme> getAllThemes() {
         List<Theme> themes =null;
         if (entityManager!=null) {
@@ -24,26 +24,24 @@ public class ThemeEJB implements ThemeEJBRemote{
         }
         return themes;
     }
-
+    @Override
     public String getName() {
-        return "ThemeBean";
+        return this.getClass().getName();
     }
-
+    @Override
     public void addTheme(Theme theme) {
         entityManager.persist(theme);
     }
-
+    @Override
     public Theme getThemeById(int id) {
-        Theme theme = null;
-        theme = entityManager.find(Theme.class, id);
-        return theme;
+        return entityManager.find(Theme.class, id);
     }
-
+    @Override
     public Theme updateTheme(Theme theme) {
         theme = entityManager.merge(theme);
         return theme;
     }
-
+    @Override
     public void deleteTheme(Theme theme) {
         entityManager.remove(entityManager.contains(theme)?theme:entityManager.merge(theme));
     }

@@ -17,7 +17,6 @@
 
 
     <persistence-unit name="HibernateJPA" transaction-type="JTA">
-
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:global/jdbc/KiaTest</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>

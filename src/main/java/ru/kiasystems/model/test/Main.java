@@ -1,7 +1,5 @@
 package ru.kiasystems.model.test;
 
-import ru.kiasystems.model.DAO.Impl.Hibernate.ThemeDAOImpl;
-import ru.kiasystems.model.DAO.ThemeDAO;
 import ru.kiasystems.model.entity.Theme;
 import ru.kiasystems.model.utils.HibernateUtils;
 
