@@ -40,7 +40,7 @@ public class ThemeEJB implements ThemeEJBRemote {
     public Theme updateTheme(Theme theme) {
         theme = entityManager.merge(theme);
         return theme;
-    }
+    }s
     @Override
     public void deleteTheme(Theme theme) {
         entityManager.remove(entityManager.contains(theme)?theme:entityManager.merge(theme));
