@@ -32,6 +32,11 @@ public class DepartmentEJBIT {
             assertNotNull("Received department not null", department1);
             departmentEJB.deleteDepartment(department);
             assertEquals(departments.size(), departmentEJB.getAllDepartments().size());
+
+            for (Department dept: departments) {
+                dept.getEmployees().size();
+                System.out.println(dept.getEmployees());
+            }
         }
     }
 }

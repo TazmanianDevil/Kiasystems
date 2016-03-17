@@ -5,6 +5,7 @@ import java.io.Serializable;
 import ru.kiasystems.model.entity.Department;
 @Entity 
 @Table(name="employees")
+@NamedQuery(name="Employee.getAllEmployees", query = "SELECT e FROM Employee e")
 public class Employee implements Serializable {
 	@Id
 	@GeneratedValue
@@ -20,7 +21,7 @@ public class Employee implements Serializable {
 	@Column(name="father_name", length=30)
 	private String fatherName;
 	
-	@OneToOne
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="department_id")
 	private  Department department;
 	
@@ -38,7 +39,7 @@ public class Employee implements Serializable {
 		this.firstName = firstName;
 	}
 	
-	public String getFristName() {
+	public String getFirstName() {
 		return firstName;
 	}
 	
@@ -67,8 +68,8 @@ public class Employee implements Serializable {
 	}
 	
 	public String toString() {
-		return String.format("Employee: [%d:%s %s %s:%s]", getId(), 
-			getSecondName(), getFristName(), getLastName(), getDepartment().getTitle());
+		return String.format("Employee: [%d:%s %s %s:%s]\n", getId(),
+			getLastName(), getFirstName(), getLastName(), getDepartment().getTitle());
 	}
 	
 	@Override
@@ -89,7 +90,7 @@ public class Employee implements Serializable {
 		Employee emp = (Employee)obj;
 		if (!firstName.equals(emp.getFirstName())) return false;
 		if (!lastName.equals(emp.getLastName())) return false;
-		if (fatherName!=null && emp.getFatherName!=null) {
+		if (fatherName!=null && emp.getFatherName()!=null) {
 			if (!fatherName.equals(emp.getFatherName())) return false;
 		}
 		if (!department.getTitle().equals(emp.getDepartment().getTitle())) return false;

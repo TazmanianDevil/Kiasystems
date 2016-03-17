@@ -15,7 +15,7 @@ import javax.ejb.Startup;
         name = "java:global/jdbc/KiaTest",
         user = "root",
         password = "rootpass",
-        databaseName = "kiasystems_test", s
+        databaseName = "kiasystems_test",
         serverName = "localhost",
         portNumber = 3306,
         properties = {"connectionAttributes=;create=true"})

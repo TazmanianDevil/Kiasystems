@@ -2,6 +2,7 @@ package ru.kiasystems.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name="departments")
@@ -18,6 +19,9 @@ public class Department implements Serializable {
 
     @Column(name="abbreviation")
     private String abbreviation;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
+    private Set<Employee> employees;
 
     public Department(){}
     public Department(String title, String abbreviation) {
@@ -49,6 +53,13 @@ public class Department implements Serializable {
         this.abbreviation = abbreviation;
     }
 
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
     public String toString () {
         return String.format("Theme: [%d:%s:%s]",id, title, abbreviation);
     }
