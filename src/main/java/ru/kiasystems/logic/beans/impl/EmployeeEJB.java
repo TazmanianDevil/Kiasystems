@@ -19,12 +19,12 @@ public class EmployeeEJB implements EmployeeEJBRemote {
     private EntityManager entityManager;
     @Override
     public List<Employee> getAllEmployees() {
-        List<Employee> employees =null;
+        List<Employee> themes =null;
         if (entityManager!=null) {
             TypedQuery<Employee> namedQuery = entityManager.createNamedQuery("Employee.getAllEmployees", Employee.class);
-            employees = namedQuery.getResultList();
+            themes = namedQuery.getResultList();
         }
-        return employees;
+        return themes;
     }
     @Override
     public String getName() {

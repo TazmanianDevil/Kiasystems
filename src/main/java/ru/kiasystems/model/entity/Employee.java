@@ -21,7 +21,7 @@ public class Employee implements Serializable {
 	@Column(name="father_name", length=30)
 	private String fatherName;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name="department_id")
 	private  Department department;
 	
@@ -88,12 +88,20 @@ public class Employee implements Serializable {
 		if (obj == null || !(obj instanceof Employee)) 
 			return false;
 		Employee emp = (Employee)obj;
-		if (!firstName.equals(emp.getFirstName())) return false;
-		if (!lastName.equals(emp.getLastName())) return false;
+		if (firstName!=null && emp.getFirstName()!=null) {
+			if (!firstName.equals(emp.getFirstName())) return false;
+		}
+		if (lastName!=null && emp.getLastName()!=null) {
+			if (!lastName.equals(emp.getLastName())) return false;
+		}
 		if (fatherName!=null && emp.getFatherName()!=null) {
+			if (department!=null && emp.getDepartment()!=null) {
+				if (department.getTitle() != null && emp.getDepartment().getTitle() != null) {
+					if (!department.getTitle().equals(emp.getDepartment().getTitle())) return false;
+				}
+			}
 			if (!fatherName.equals(emp.getFatherName())) return false;
 		}
-		if (!department.getTitle().equals(emp.getDepartment().getTitle())) return false;
 		return true;
 		
 	}
