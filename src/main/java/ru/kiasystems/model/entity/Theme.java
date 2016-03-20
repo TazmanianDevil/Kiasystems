@@ -81,7 +81,7 @@ public class Theme implements Serializable{
             return false;
         Theme theme = (Theme)obj;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return this.title == theme.getTitle() && sdf.format(this.startDate).equals(theme.getStartDate())
+        return this.title.equals(theme.getTitle()) && sdf.format(this.startDate).equals(theme.getStartDate())
                 && this.closeDate == theme.getCloseDate();
     }
 }
