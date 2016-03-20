@@ -19,6 +19,10 @@
     <persistence-unit name="HibernateJPA" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:global/jdbc/KiaTest</jta-data-source>
+        <class>ru.kiasystems.model.entity.Department</class>
+        <class>ru.kiasystems.model.entity.Employee</class>
+        <class>ru.kiasystems.model.entity.Theme</class>
+        <class>ru.kiasystems.model.entity.Role</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

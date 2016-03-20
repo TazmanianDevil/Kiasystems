@@ -70,7 +70,8 @@ public class Theme implements Serializable{
     }
 
     public String toString() {
-        return "Theme[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
+        //return "Theme[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
+         return String.format("Theme[%d:%s:%1$td.%1$tm.%1$tY:%2$td.%2$tm.%2$tY]\n", id, title, startDate, closeDate);
     }
 
     public boolean equals(Object obj) {
