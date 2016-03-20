@@ -8,7 +8,10 @@ import java.io.Serializable;
 public class User implements Serializable{
 
     @Id
-    //@OneToOne(mappedBy = "user")
-    private Integer id;
+    @OneToOne
+    @JoinTable(name = "employees")
+    @JoinColumn(name="employee_id")
+    private Employee employee;
+
 
 }
