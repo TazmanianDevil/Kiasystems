@@ -23,6 +23,7 @@
         <class>ru.kiasystems.model.entity.Employee</class>
         <class>ru.kiasystems.model.entity.Theme</class>
         <class>ru.kiasystems.model.entity.Role</class>
+        <class>ru.kiasystems.model.entity.User</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

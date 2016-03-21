@@ -24,7 +24,11 @@ public class Employee implements Serializable {
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name="department_id")
 	private  Department department;
-	
+
+	@OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+	private User user;
+
 	public Employee(){}
 	
 	public void setId(Integer id) {
@@ -71,7 +75,15 @@ public class Employee implements Serializable {
 		return String.format("Employee: [%d:%s %s %s:%s]\n", getId(),
 			getLastName(), getFirstName(), getLastName(), getDepartment().getTitle());
 	}
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
