@@ -23,8 +23,11 @@ public class UserEJBIT {
             assertNotNull("User list cannot be null for test DB", users);
             User user = new User();
             // Задаем поля для User
-            user.setId(1);
+            user.setId(3);
+            user.setUsername("Pavel");
+            user.setPassword("Shestakov");
             userEJB.addUser(user);
+
             //Persist user to the database
             assertNotNull("Id can not be null", user.getId());
 //             Check all users and sure there is an extra one
