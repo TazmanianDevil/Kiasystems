@@ -22,16 +22,17 @@ public class EmployeeEJBIT {
             List<Employee> employees = employeeEJB.getAllEmployees();
             System.out.println(employees);
             assertNotNull("Employee list cannot be null for test DB", employees);
-//            Employee employee = new Employee();
-//            employeeEJB.addEmployee(employee);
-//            //Persist employee to the database
-//            assertNotNull("Id can not be null", employee.getId());
-            // Check all employees and sure there is an extra one
-//            assertEquals(employees.size()+1, employeeEJB.getAllEmployees().size());
-//            Employee employee1 = employeeEJB.getEmployeeById(employee.getId());
-//            assertNotNull("Received employee not null", employee1);
-//            employeeEJB.deleteEmployee(employee);
-//            assertEquals(employees.size(), employeeEJB.getAllEmployees().size());
+            Employee employee = new Employee();
+            // Задаем поля для сотрудника
+            employeeEJB.addEmployee(employee);
+            //Persist employee to the database
+            assertNotNull("Id can not be null", employee.getId());
+//             Check all employees and sure there is an extra one
+            assertEquals(employees.size()+1, employeeEJB.getAllEmployees().size());
+            Employee employee1 = employeeEJB.getEmployeeById(employee.getId());
+            assertNotNull("Received employee not null", employee1);
+            employeeEJB.deleteEmployee(employee);
+            assertEquals(employees.size(), employeeEJB.getAllEmployees().size());
         }
     }
 }

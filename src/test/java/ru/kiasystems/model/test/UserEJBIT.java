@@ -9,7 +9,7 @@ import javax.naming.Context;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
-
+import static org.junit.Assert.assertEquals;
 
 public class UserEJBIT {
     UserEJB userEJB;
@@ -21,16 +21,18 @@ public class UserEJBIT {
             List<User> users = userEJB.getAllUsers();
             System.out.println(users);
             assertNotNull("User list cannot be null for test DB", users);
-//            User user = new User();
-//            userEJB.addUser(user);
-//            //Persist user to the database
-//            assertNotNull("Id can not be null", user.getId());
-            // Check all users and sure there is an extra one
-//            assertEquals(users.size()+1, userEJB.getAllUsers().size());
-//            User user1 = userEJB.getUserById(user.getId());
-//            assertNotNull("Received user not null", user1);
-//            userEJB.deleteUser(user);
-//            assertEquals(users.size(), userEJB.getAllUsers().size());
+            User user = new User();
+            // Задаем поля для User
+            user.setId(1);
+            userEJB.addUser(user);
+            //Persist user to the database
+            assertNotNull("Id can not be null", user.getId());
+//             Check all users and sure there is an extra one
+            assertEquals(users.size()+1, userEJB.getAllUsers().size());
+            User user1 = userEJB.getUserById(user.getId());
+            assertNotNull("Received user not null", user1);
+            userEJB.deleteUser(user);
+            assertEquals(users.size(), userEJB.getAllUsers().size());
         }
     }
 }
