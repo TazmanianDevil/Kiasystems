@@ -1,7 +1,8 @@
 package ru.kiasystems.model.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
+import ru.kiasystems.model.entity.User;
+import java.util.List;
 @Entity
 @Table(name="roles")
 @NamedQuery(name="Role.getAllRoles", query = "SELECT r FROM Role r")
@@ -19,6 +20,9 @@ public class Role {
     @Column(name="description", length = 200)
     private String description;
 
+	@ManyToMany(mappedBy="roles")
+	private List<User> users;
+	
     public Role(){}
 
     public Role(String name, String description) {
@@ -38,6 +42,15 @@ public class Role {
         return name;
     }
 
+	
+	public void setUsers(List<User> users) {
+		this.users= users;
+	}
+	
+	public List<User> getUsers() {
+		return users;
+	}
+	
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

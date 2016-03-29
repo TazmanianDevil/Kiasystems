@@ -2,15 +2,14 @@ package ru.kiasystems.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+import ru.kiasystems.model.entity.Role;
+import java.util.List;
 @Entity
 @Table(name="users")
 @NamedQuery(name="User.getAllUsers", query="SELECT u FROM User u")
 public class User implements Serializable{
 
     @Id
-//    @OneToOne(mappedBy = "user")
-//    private Employee employee;
     @Column(name="employee_id")
     private Integer id;
     @Column(name="username", length = 20, nullable = false)
@@ -19,6 +18,12 @@ public class User implements Serializable{
     @Column(name="password", length=32, nullable = false)
     private String password;
 
+	@ManyToMany
+	@JoinTable(name="policies",
+		joinColumns=@JoinColumn(name="employee_id"),
+		inverseJoinColumns=@JoinColumn(name="role_id"))
+	private List<Role>roles;
+		
     public User(){}
 
     public Integer getId() {
@@ -45,11 +50,13 @@ public class User implements Serializable{
         this.password = password;
     }
 
-//    @Override
-//    public String toString() {
-//        return String.format("User[%d:%s:%s:%s:%d]", getEmployee().getId(),
-//                getEmployee().getLastName(), getEmployee().getFirstName(), getUsername(), getPassword());
-//    }
+	public List<Role> getRoles() {
+		return roles;
+	}
+	
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
     @Override
     public String toString () {
         return "User["+id+":"+username+":"+password+"]";
