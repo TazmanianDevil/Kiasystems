@@ -18,7 +18,7 @@ public class User implements Serializable{
     @Column(name="password", length=32, nullable = false)
     private String password;
 
-	@ManyToMany
+	@ManyToMany (fetch=FetchType.LAZY)
 	@JoinTable(name="policies",
 		joinColumns=@JoinColumn(name="employee_id"),
 		inverseJoinColumns=@JoinColumn(name="role_id"))
