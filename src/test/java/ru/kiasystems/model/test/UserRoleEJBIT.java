@@ -6,6 +6,8 @@ import ru.kiasystems.logic.beans.impl.UserEJB;
 import ru.kiasystems.logic.beans.impl.RoleEJB;
 
 import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
+
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.Context;
 import java.util.List;
@@ -30,12 +32,15 @@ public class UserRoleEJBIT {
 				System.out.println(role.getUsers());
 			}
 			
-			User user = new User();
+			/*User user = new User();
 			user.setId(3);
 			user.setUsername("Pavel");
 			user.setPassword("Shestakov");
 			user.setRoles(roles);
-			userEJB.addUser(user);
+			userEJB.addUser(user);*/
+			User user = userEJB.getUserById(3);
+			assertNotNull("Received user is not null", user);
+			userEJB.deleteUser(user);
 			
 		} 
 	}
