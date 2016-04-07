@@ -20,7 +20,10 @@ public class Role {
     @Column(name="description", length = 200)
     private String description;
 
-	@ManyToMany(mappedBy="roles", fetch=FetchType.LAZY)
+    @ManyToMany (fetch=FetchType.LAZY)
+    @JoinTable(name="policies",
+            joinColumns=@JoinColumn(name="role_id"),
+            inverseJoinColumns=@JoinColumn(name="employee_id"))
 	private List<User> users;
 	
     public Role(){}
