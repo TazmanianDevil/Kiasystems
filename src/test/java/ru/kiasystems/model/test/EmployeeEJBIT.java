@@ -24,6 +24,7 @@ public class EmployeeEJBIT {
             EmployeeEJB employeeEJB = (EmployeeEJB)ctx.lookup("java:global/ejb-app/classes/EmployeeEJB!ru.kiasystems.logic.beans.impl.EmployeeEJB");
             DepartmentEJB  departmentEJB = (DepartmentEJB)ctx.lookup("java:global/ejb-app/classes/DepartmentEJB!ru.kiasystems.logic.beans.impl.DepartmentEJB");
             List<Employee> employees = employeeEJB.getAllEmployees();
+            System.out.println("<----------------------------------EmployeeEJBIT--------------------------->");
             System.out.println(employees);
             assertNotNull("Employee list cannot be null for test DB", employees);
             Employee employee = new Employee();

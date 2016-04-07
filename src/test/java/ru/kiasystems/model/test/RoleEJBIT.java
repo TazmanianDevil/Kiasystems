@@ -22,6 +22,7 @@ import static org.junit.Assert.assertNotNull;
             RoleEJB roleEJB = (RoleEJB)ctx.lookup("java:global/ejb-app/classes/RoleEJB!ru.kiasystems.logic.beans.impl.RoleEJB");
             List<Role> roles = roleEJB.getAllRoles();
             assertNotNull("Role list cannot be null for test DB", roles);
+            System.out.println("<------------------------------------ RoleEJBIT --------------------------------->");
             System.out.println(roles);
             Role role = new Role();
             role.setName("Test Role");

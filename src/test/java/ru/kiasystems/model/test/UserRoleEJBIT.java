@@ -17,11 +17,12 @@ public class UserRoleEJBIT {
 	RoleEJB roleEJB;
 	@Test
 	public  void testUserRole() throws Exception {
-		try (EJBContainer ejbContainer = EJBContainer.createEJBContainer()){
+		/*try (EJBContainer ejbContainer = EJBContainer.createEJBContainer()){
 			Context ctx = ejbContainer.getContext();
 			userEJB = (UserEJB)ctx.lookup("java:global/ejb-app/classes/UserEJB!ru.kiasystems.logic.beans.impl.UserEJB");
 			roleEJB = (RoleEJB)ctx.lookup("java:global/ejb-app/classes/RoleEJB!ru.kiasystems.logic.beans.impl.RoleEJB");
 			List<User> users = userEJB.getAllUsers();
+			System.out.println("<--------------------------------------- UserRoleEJBIT ------------------------------>");
 			for (User user: users) {
 				System.out.println(user);
 				System.out.println(user.getRoles());
@@ -32,16 +33,16 @@ public class UserRoleEJBIT {
 				System.out.println(role.getUsers());
 			}
 			
-			/*User user = new User();
+			User user = new User();
 			user.setId(3);
 			user.setUsername("Pavel");
 			user.setPassword("Shestakov");
 			user.setRoles(roles);
-			userEJB.addUser(user);*/
-			User user = userEJB.getUserById(3);
-			assertNotNull("Received user is not null", user);
-			userEJB.deleteUser(user);
+			userEJB.addUser(user);
+			User user2 = userEJB.getUserById(3);
+			assertNotNull("Received user is not null", user2);
+			userEJB.deleteUser(user2);
 			
-		} 
+		} */
 	}
 }
