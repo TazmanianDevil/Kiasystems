@@ -33,7 +33,7 @@ public class ThemeEJB implements ThemeEJBRemote {
         entityManager.persist(theme);
     }
     @Override
-    public Theme getThemeById(int id) {
+    public Theme getThemeById(Long id) {
         return entityManager.find(Theme.class, id);
     }
     @Override

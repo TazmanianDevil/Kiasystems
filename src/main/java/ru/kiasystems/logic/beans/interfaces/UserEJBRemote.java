@@ -8,7 +8,7 @@ public interface UserEJBRemote {
     String getName();
     List<User> getAllUsers();
     void addUser(User user);
-    User getUserById(int id);
+    User getUserById(Long id);
     User updateUser(User user);
     void deleteUser(User user);
 }

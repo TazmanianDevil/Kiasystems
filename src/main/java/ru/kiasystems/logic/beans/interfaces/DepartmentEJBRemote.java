@@ -12,7 +12,7 @@ public interface DepartmentEJBRemote {
     String getName();
     List<Department> getAllDepartments();
     void addDepartment(Department department);
-    Department getDepartmentById(int id);
+    Department getDepartmentById(Long id);
     Department updateDepartment(Department department);
     void deleteDepartment(Department department);
 }

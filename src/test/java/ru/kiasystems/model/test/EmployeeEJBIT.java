@@ -30,7 +30,7 @@ public class EmployeeEJBIT {
             Employee employee = new Employee();
             employee.setFirstName("Kuzin");
             employee.setLastName("Kuzin");
-            Department department = departmentEJB.getDepartmentById(2);
+            Department department = departmentEJB.getDepartmentById(new Long(2));
             employee.setDepartment(department);
             // Задаем поля для сотрудника
             employeeEJB.addEmployee(employee);

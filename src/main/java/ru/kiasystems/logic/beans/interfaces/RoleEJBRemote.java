@@ -8,7 +8,7 @@ public interface RoleEJBRemote {
     String getName();
     List<Role> getAllRoles();
     void addRole(Role theme);
-    Role getRoleById(int id);
+    Role getRoleById(Long id);
     Role updateRole(Role theme);
     void deleteRole(Role theme);
 }

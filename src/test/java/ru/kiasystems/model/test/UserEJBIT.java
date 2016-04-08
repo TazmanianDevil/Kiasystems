@@ -22,27 +22,28 @@ public class UserEJBIT {
             Context ctx = ec.getContext();
             UserEJB userEJB = (UserEJB)ctx.lookup("java:global/ejb-app/classes/UserEJB!ru.kiasystems.logic.beans.impl.UserEJB");
             RoleEJB roleEJB = (RoleEJB)ctx.lookup("java:global/ejb-app/classes/RoleEJB!ru.kiasystems.logic.beans.impl.RoleEJB");
-           /* List<User> users = userEJB.getAllUsers();
+            List<User> users = null;
+            users = userEJB.getAllUsers();
             System.out.println("<----------------------------------- UserEJBIT ------------------------------->");
             System.out.println(users);
             assertNotNull("User list cannot be null for test DB", users);
             User user = new User();
             // Задаем поля для User
-            user.setId(3);
+            user.setId(new Long(3));
             user.setUsername("Pavel");
             user.setPassword("Shestakov");
             List<Role> roles = roleEJB.getAllRoles();
             user.setRoles(roles);
-            userEJB.updateUser(user);
+            userEJB.addUser(user);
             //Persist user to the database
             assertNotNull("Id can not be null", user.getId());
 //             Check all users and sure there is an extra one
-            assertEquals(users.size()+1, userEJB.getAllUsers().size());*/
-            User user1 = userEJB.getUserById(3);
+            assertEquals(users.size()+1, userEJB.getAllUsers().size());
+            User user1 = userEJB.getUserById(new Long(3));
             assertNotNull("Received user not null", user1.getId());
             //user1.setRoles(null);
             userEJB.deleteUser(user1);
-            //assertEquals(users.size(), userEJB.getAllUsers().size());
+            assertEquals(users.size(), userEJB.getAllUsers().size());
         }
     }
 }

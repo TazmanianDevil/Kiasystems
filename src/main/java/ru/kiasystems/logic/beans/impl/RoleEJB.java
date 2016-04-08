@@ -33,7 +33,7 @@ public class RoleEJB implements RoleEJBRemote {
         entityManager.persist(role);
     }
     @Override
-    public Role getRoleById(int id) {
+    public Role getRoleById(Long id) {
         return entityManager.find(Role.class, id);
     }
     @Override

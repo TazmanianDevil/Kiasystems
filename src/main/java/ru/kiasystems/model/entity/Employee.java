@@ -10,7 +10,7 @@ public class Employee implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="employee_id")
-	private Integer id;
+	private Long id;
 	
 	@Column(name="first_name", nullable=false, length=30)
 	private String firstName;
@@ -31,11 +31,11 @@ public class Employee implements Serializable {
 
 	public Employee(){}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	

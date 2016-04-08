@@ -11,7 +11,7 @@ public interface ThemeEJBRemote {
     String getName();
     List<Theme> getAllThemes();
     void addTheme(Theme theme);
-    Theme getThemeById(int id);
+    Theme getThemeById(Long id);
     Theme updateTheme(Theme theme);
     void deleteTheme(Theme theme);
 }

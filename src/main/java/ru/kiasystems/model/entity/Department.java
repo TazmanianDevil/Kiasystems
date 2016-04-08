@@ -12,7 +12,7 @@ public class Department implements Serializable {
     @Id
     @GeneratedValue
     @Column(name="department_id")
-    private Integer id;
+    private Long id;
 
     @Column(name="title")
     private String title;
@@ -29,11 +29,11 @@ public class Department implements Serializable {
         this.abbreviation = abbreviation;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,10 +70,8 @@ public class Department implements Serializable {
         if (obj == null || !(obj instanceof Department))
             return false;
         Department dept = (Department)obj;
-        if (dept.getTitle() == this.getTitle() &&
-                dept.getAbbreviation() == this.getAbbreviation())
-            return true;
-        else return false;
+        return dept.getTitle() == this.getTitle() &&
+                dept.getAbbreviation() == this.getAbbreviation();
     }
 	
 	

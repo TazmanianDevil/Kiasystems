@@ -11,7 +11,7 @@ public class Theme implements Serializable{
     @Id
     @GeneratedValue
     @Column(name="theme_id")
-    private Integer id;
+    private Long id;
 
     @Column(name="title", nullable = false)
     private String title;
@@ -37,11 +37,11 @@ public class Theme implements Serializable{
         this.closeDate = closeDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

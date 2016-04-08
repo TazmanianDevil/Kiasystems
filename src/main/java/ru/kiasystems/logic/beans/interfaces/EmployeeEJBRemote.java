@@ -11,7 +11,7 @@ public interface EmployeeEJBRemote {
     String getName();
     List<Employee> getAllEmployees();
     void addEmployee(Employee employee);
-    Employee getEmployeeById(int id);
+    Employee getEmployeeById(Long id);
     Employee updateEmployee(Employee employee);
     void deleteEmployee(Employee employee);
 }

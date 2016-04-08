@@ -31,11 +31,11 @@ public class DepartmentEJB implements DepartmentEJBRemote {
         return this.getClass().getName();
     }
     @Override
-    public void addDepartment(Department d3epartment) {
-        entityManager.persist(d3epartment);
+    public void addDepartment(Department department) {
+        entityManager.persist(department);
     }
     @Override
-    public Department getDepartmentById(int id) {
+    public Department getDepartmentById(Long id) {
         return entityManager.find(Department.class, id);
     }
     @Override

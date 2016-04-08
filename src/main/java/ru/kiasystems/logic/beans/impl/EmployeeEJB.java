@@ -35,7 +35,7 @@ public class EmployeeEJB implements EmployeeEJBRemote {
         entityManager.persist(theme);
     }
     @Override
-    public Employee getEmployeeById(int id) {
+    public Employee getEmployeeById(Long id) {
         return entityManager.find(Employee.class, id);
     }
     @Override
