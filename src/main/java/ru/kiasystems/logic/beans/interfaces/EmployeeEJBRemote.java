@@ -4,9 +4,6 @@ import ru.kiasystems.model.entity.Employee;
 
 import java.util.List;
 
-/**
- * Created by User on 15.03.2016.
- */
 public interface EmployeeEJBRemote {
     String getName();
     List<Employee> getAllEmployees();

@@ -5,9 +5,6 @@ import ru.kiasystems.model.entity.Theme;
 
 import java.util.List;
 
-/**
- * Created by User on 15.03.2016.
- */
 public interface DepartmentEJBRemote {
     String getName();
     List<Department> getAllDepartments();
