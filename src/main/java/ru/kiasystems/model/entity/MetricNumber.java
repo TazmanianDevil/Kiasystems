@@ -2,7 +2,7 @@ package ru.kiasystems.model.entity;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
-
+import java.util.Set;
 @Entity
 @Table(name = "metric_numbers")
 @NamedQuery(name="MetricNumber.getAllMetricNumbers", query = "SELECT mn FROM MetricNumber mn")
@@ -25,6 +25,17 @@ public class MetricNumber {
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.REMOVE)
     @PrimaryKeyJoinColumn
     MetricNumberImage image;
+
+    @OneToMany(mappedBy = "metricNumber", fetch = FetchType.LAZY)
+    private Set<Product> products;
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
     public MetricNumber(){}
     public Long getId() {
