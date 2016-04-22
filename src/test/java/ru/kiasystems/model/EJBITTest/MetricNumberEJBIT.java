@@ -1,4 +1,4 @@
-package ru.kiasystems.model.test;
+package ru.kiasystems.model.EJBITTest;
 
 import org.junit.Test;
 

@@ -6,10 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 @Entity
 @Table (name="themes")
-@NamedQuery(name = "Theme.getAllThemes", query = "SELECT t FROM Theme t")
+@NamedQueries({@NamedQuery(name = "Theme.findAll", query = "SELECT t FROM Theme t"),
+@NamedQuery(name = "Theme.findById", query = "SELECT t FROM Theme t WHERE t.id=:id"),
+@NamedQuery(name = "Theme.findByTitle", query = "SELECT t FROM Theme t WHERE t.title LIKE :title"),
+})
+
 public class Theme implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="theme_id")
     private Long id;
 
@@ -70,18 +74,28 @@ public class Theme implements Serializable{
     }
 
     public String toString() {
-        //return "Theme[" + id + ":" + title+":"+startDate+":"+closeDate+"]";
-         return String.format("Theme[%d:%s:%1$td.%1$tm.%1$tY:%2$td.%2$tm.%2$tY]\n", id, title, startDate, closeDate);
+         return String.format("Theme[%d:%s:%3$td.%3$tm.%3$tY:%4$td.%4$tm.%4$tY]\n", id, title, startDate, closeDate);
     }
 
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-        if (obj==null || !(obj instanceof Theme))
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Theme theme = (Theme) o;
+
+        if (getTitle() != null ? !getTitle().equals(theme.getTitle()) : theme.getTitle() != null) return false;
+        if (getStartDate() != null ? !getStartDate().equals(theme.getStartDate()) : theme.getStartDate() != null)
             return false;
-        Theme theme = (Theme)obj;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return this.title.equals(theme.getTitle()) && sdf.format(this.startDate).equals(theme.getStartDate())
-                && this.closeDate == theme.getCloseDate();
+        return getCloseDate() != null ? getCloseDate().equals(theme.getCloseDate()) : theme.getCloseDate() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle() != null ? getTitle().hashCode() : 0;
+        result = 31 * result + (getStartDate() != null ? getStartDate().hashCode() : 0);
+        result = 31 * result + (getCloseDate() != null ? getCloseDate().hashCode() : 0);
+        return result;
     }
 }

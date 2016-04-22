@@ -1,14 +1,22 @@
 package ru.kiasystems.model.entity;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.io.Serializable;
 import ru.kiasystems.model.entity.Department;
 @Entity 
 @Table(name="employees")
-@NamedQuery(name="Employee.getAllEmployees", query = "SELECT e FROM Employee e")
+@NamedQueries({
+@NamedQuery(name="Employee.findAll", query = "SELECT e FROM Employee e"),
+@NamedQuery(name="Employee.findById", query = "SELECT e FROM Employee e WHERE e.id=:id"),
+@NamedQuery(name="Employee.findByLastName",query = "SELECT e FROM Employee e WHERE e.lastName=:lastName"),
+@NamedQuery(name="Employee.findByFirstNameAndLastName", query = "SELECT e FROM Employee e WHERE e.firstName=" +
+		":firstName AND e.lastName=:lastName"),
+@NamedQuery(name="Employee.findAllByLastNameSimilarTo", query = "SELECT e FROM Employee e WHERE e.lastName LIKE %:lastName%")
+		})
 public class Employee implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="employee_id")
 	private Long id;
 	
@@ -85,36 +93,22 @@ public class Employee implements Serializable {
 	}
 
 	@Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-		result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-		result = 31 * result + (fatherName != null ? fatherName.hashCode() : 0);
-        return result;
-    }
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null || !(obj instanceof Employee)) 
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Employee employee = (Employee) o;
+		if (getFirstName() != null ? !getFirstName().equals(employee.getFirstName()) : employee.getFirstName() != null)
 			return false;
-		Employee emp = (Employee)obj;
-		if (firstName!=null && emp.getFirstName()!=null) {
-			if (!firstName.equals(emp.getFirstName())) return false;
-		}
-		if (lastName!=null && emp.getLastName()!=null) {
-			if (!lastName.equals(emp.getLastName())) return false;
-		}
-		if (fatherName!=null && emp.getFatherName()!=null) {
-			if (department!=null && emp.getDepartment()!=null) {
-				if (department.getTitle() != null && emp.getDepartment().getTitle() != null) {
-					if (!department.getTitle().equals(emp.getDepartment().getTitle())) return false;
-				}
-			}
-			if (!fatherName.equals(emp.getFatherName())) return false;
-		}
-		return true;
-		
+		if (getLastName() != null ? !getLastName().equals(employee.getLastName()) : employee.getLastName() != null)
+			return false;
+		return getFatherName() != null ? getFatherName().equals(employee.getFatherName()) : employee.getFatherName() == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getFirstName() != null ? getFirstName().hashCode() : 0;
+		result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
+		result = 31 * result + (getFatherName() != null ? getFatherName().hashCode() : 0);
+		return result;
 	}
 }
