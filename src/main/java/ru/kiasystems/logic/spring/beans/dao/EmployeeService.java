@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface EmployeeService {
     List<Employee> findAll();
+    List<Employee> findAllWithDetail();
     Employee findById(Long id);
-    List<Employee> fintByLastName(String lastName);
+    Employee fintByLastName(String lastName);
     Employee findByFirstNameAndLastName(String firstName, String lastName);
     List<Employee> findByLastNameSimilarTo(String lastName);
     Employee save(Employee employee);

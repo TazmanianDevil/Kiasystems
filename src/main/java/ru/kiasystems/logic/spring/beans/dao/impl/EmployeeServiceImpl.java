@@ -25,13 +25,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public List<Employee> findAllWithDetail() {
+        return em.createNamedQuery("Employee.findAllWithDetail", Employee.class).getResultList();
+    }
+
+    @Override
     public Employee findById(Long id) {
         return em.createNamedQuery("Employee.findById", Employee.class).setParameter("id", id).getSingleResult();
     }
 
     @Override
-    public List<Employee> fintByLastName(String lastName) {
-        return em.createNamedQuery("Employee.findByLastName", Employee.class).setParameter("lastName",lastName).getResultList();
+    public Employee fintByLastName(String lastName) {
+        return em.createNamedQuery("Employee.findByLastName", Employee.class).setParameter("lastName",lastName).getSingleResult();
     }
 
     @Override

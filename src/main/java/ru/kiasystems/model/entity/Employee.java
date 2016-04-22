@@ -8,11 +8,12 @@ import ru.kiasystems.model.entity.Department;
 @Table(name="employees")
 @NamedQueries({
 @NamedQuery(name="Employee.findAll", query = "SELECT e FROM Employee e"),
-@NamedQuery(name="Employee.findById", query = "SELECT e FROM Employee e WHERE e.id=:id"),
+@NamedQuery(name="Employee.findAllWithDetail", query = "SELECT DISTINCT e FROM Employee e LEFT JOIN FETCH e.department d LEFT JOIN FETCH e.user u"),
+@NamedQuery(name="Employee.findById", query = "SELECT DISTINCT e FROM Employee e LEFT JOIN FETCH e.department d LEFT JOIN FETCH e.user u WHERE e.id=:id"),
 @NamedQuery(name="Employee.findByLastName",query = "SELECT e FROM Employee e WHERE e.lastName=:lastName"),
 @NamedQuery(name="Employee.findByFirstNameAndLastName", query = "SELECT e FROM Employee e WHERE e.firstName=" +
 		":firstName AND e.lastName=:lastName"),
-@NamedQuery(name="Employee.findAllByLastNameSimilarTo", query = "SELECT e FROM Employee e WHERE e.lastName LIKE %:lastName%")
+@NamedQuery(name="Employee.findAllByLastNameSimilarTo", query = "SELECT e FROM Employee e WHERE e.lastName LIKE :lastName")
 		})
 public class Employee implements Serializable {
 	@Id
@@ -80,8 +81,8 @@ public class Employee implements Serializable {
 	}
 	
 	public String toString() {
-		return String.format("Employee: [%d:%s %s %s:%s]\n", getId(),
-			getLastName(), getFirstName(), getLastName(), getDepartment().getTitle());
+		return String.format("Employee: [%d:%s %s %s]%n", getId(),
+			getLastName(), getFirstName(), getLastName());
 	}
 
 	public User getUser() {
