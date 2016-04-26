@@ -5,7 +5,10 @@ import java.util.Arrays;
 
 @Entity
 @Table(name="metric_number_images")
-@NamedQuery(name="MetricNumberImage.getAllMetricNumberImages", query = "SELECT mni FROM MetricNumberImage mni")
+@NamedQueries({
+    @NamedQuery(name="MetricNumberImage.findAll", query = "SELECT mni FROM MetricNumberImage mni"),
+    @NamedQuery(name="MetricNumberImage.findById", query = "SELECT mni FROM MetricNumberImage mni WHERE mni.id=:id")
+})
 public class MetricNumberImage {
     @Id
     @Column(name="metric_number_id")
@@ -16,7 +19,12 @@ public class MetricNumberImage {
     @Basic(fetch = FetchType.LAZY)
     private byte[] image;
 
-    public MetricNumberImage(){}
+    protected MetricNumberImage(){}
+
+    public MetricNumberImage(Long id, byte[] image) {
+        this.id = id;
+        this.image = image;
+    }
 
     public Long getId() {
         return id;
@@ -35,20 +43,26 @@ public class MetricNumberImage {
     }
 
     @Override
+    public String toString() {
+        return String.format("MetricNumberImage[%d, %d]\n", id, image.length);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         MetricNumberImage that = (MetricNumberImage) o;
-        return Arrays.equals(image, that.image);
+
+        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
+        return Arrays.equals(getImage(), that.getImage());
+
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(image);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("MetricNumberImage[%d, %d]\n", id, image.length);
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + Arrays.hashCode(getImage());
+        return result;
     }
 }

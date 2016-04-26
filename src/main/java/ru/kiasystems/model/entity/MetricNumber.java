@@ -5,11 +5,19 @@ import javax.persistence.*;
 import java.util.Set;
 @Entity
 @Table(name = "metric_numbers")
-@NamedQuery(name="MetricNumber.getAllMetricNumbers", query = "SELECT mn FROM MetricNumber mn")
+@NamedQueries({
+@NamedQuery(name="MetricNumber.findAll", query = "SELECT mn FROM MetricNumber mn"),
+@NamedQuery(name="MetricNumber.findAllWithDetail", query = "SELECT DISTINCT mn FROM MetricNumber mn LEFT JOIN FETCH mn.image im" +
+        " LEFT JOIN FETCH mn.products p"),
+@NamedQuery(name="MetricNumber.findById", query = "SELECT DISTINCT mn FROM MetricNumber mn LEFT JOIN FETCH mn.image im" +
+        " LEFT JOIN FETCH mn.products p WHERE mn.id=:id"),
+@NamedQuery(name="MetricNumber.findByName", query = "SELECT mn FROM MetricNumber mn WHERE mn.name=:name"),
+@NamedQuery(name="MetricNumber.findByTitle", query = "SELECT mn FROM MetricNumber mn WHERE mn.title=:title")
+})
 public class MetricNumber {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="metric_number_id")
     private Long id;
 
@@ -37,7 +45,13 @@ public class MetricNumber {
         this.products = products;
     }
 
-    public MetricNumber(){}
+    protected MetricNumber(){}
+
+    public MetricNumber(String name, String title, String description){
+        this.name = name;
+        this.title = title;
+        this.description = description;
+    }
     public Long getId() {
         return id;
     }
@@ -70,25 +84,20 @@ public class MetricNumber {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MetricNumber that = (MetricNumber) o;
-
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        return description != null ? description.equals(that.description) : that.description == null;
-
+    public void addProduct(Product p) {
+        p.setMetricNumber(this);
+        getProducts().add(p);
     }
 
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
+    public void removeProduct(Product p) {
+        getProducts().remove(p);
+    }
+    public MetricNumberImage getImage() {
+        return image;
+    }
+
+    public void setImage(MetricNumberImage image) {
+        this.image = image;
     }
 
     @Override
@@ -96,11 +105,24 @@ public class MetricNumber {
         return String.format("MetricNumber[%d:%s:%s:%s]\n", id, name, title, description);
     }
 
-    public MetricNumberImage getImage() {
-        return image;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MetricNumber that = (MetricNumber) o;
+
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getTitle() != null ? !getTitle().equals(that.getTitle()) : that.getTitle() != null) return false;
+        return getDescription() != null ? getDescription().equals(that.getDescription()) : that.getDescription() == null;
+
     }
 
-    public void setImage(MetricNumberImage image) {
-        this.image = image;
+    @Override
+    public int hashCode() {
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        return result;
     }
 }

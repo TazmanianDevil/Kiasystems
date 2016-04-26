@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 
 
     public class RoleEJBIT {
-    RoleEJB roleEJB;
+    /*RoleEJB roleEJB;
     @Test
     public void shouldCreate() throws Exception {
         try (EJBContainer ec = EJBContainer.createEJBContainer()) {
@@ -37,5 +37,5 @@ import static org.junit.Assert.assertNotNull;
             roleEJB.deleteRole(role);
             assertEquals(roles.size(), roleEJB.getAllRoles().size());
         }
-    }
+    }*/
 }

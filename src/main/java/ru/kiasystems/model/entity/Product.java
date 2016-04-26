@@ -1,15 +1,38 @@
 package ru.kiasystems.model.entity;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
 @Table (name="products")
-@NamedQuery(name="Product.getAllProducts", query = "SELECT p FROM Product p")
+@NamedQueries({
+//        @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p ORDER BY p.index"),
+//        @NamedQuery(name="Product.findAllWithDetail", query = "SELECT p FROM Product p " +
+//                "LEFT JOIN FETCH p.metricNumber mn " +
+//                "LEFT JOIN FETCH p.returnEmployee re " +
+//                "LEFT JOIN FETCH p.takingEmployee te " +
+//                "LEFT JOIN FETCH p.theme t ORDER BY p.index")
+        @NamedQuery(name="Product.findAllByMetricNumberId", query = "SELECT p FROM Product p " +
+                " WHERE p.metricNumber.id=:metricNumberId ORDER BY p.index ASC"),
+        @NamedQuery(name="Product.findAllWithDetailByMetricNumberId", query = "SELECT p FROM Product p " +
+                "LEFT JOIN FETCH p.metricNumber mn " +
+                "LEFT JOIN FETCH p.takingEmployee te " +
+                "LEFT JOIN FETCH p.returnEmployee re " +
+                "LEFT JOIN FETCH p.theme t " +
+                " WHERE p.metricNumber.id=:metricNumberId ORDER BY p.index"),
+        @NamedQuery(name="Product.findById", query = "SELECT p FROM Product p " +
+                "LEFT JOIN FETCH p.metricNumber mn " +
+                "LEFT JOIN FETCH p.takingEmployee te " +
+                "LEFT JOIN FETCH p.returnEmployee re " +
+                "LEFT JOIN FETCH p.theme t " +
+                "WHERE p.id=:id ORDER BY p.index")
+
+})
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_id")
     private Long id;
 
@@ -25,7 +48,7 @@ public class Product {
     private Date returnDate;
 
     @Column(name="notes", length = 250)
-    private String note;
+    private String notes;
 
     @Column(name="special_notes", length = 250)
     private String specialNotes;
@@ -38,16 +61,25 @@ public class Product {
     @JoinColumn(name="employee_return_id")
     private Employee returnEmployee;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="theme_id")
     private Theme theme;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="metric_number_id")
     private MetricNumber metricNumber;
 
-    public Product(){}
+    public Product(Integer index, Date takingDate, Date returnDate, String notes, String specialNotes){
+        this.index = index;
+        this.takingDate = takingDate;
+        this.returnDate = returnDate;
+        this.notes=notes;
+        this.specialNotes=specialNotes;
+    }
 
+    protected Product() {
+
+    }
     public Long getId() {
         return id;
     }
@@ -80,12 +112,12 @@ public class Product {
         this.returnDate = returnDate;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public String getSpecialNotes() {
@@ -128,6 +160,11 @@ public class Product {
         this.metricNumber = metricNumber;
     }
 
+    public String toString() {
+        return String.format("Product[%d:%03d:%tD:%tD:%s:%s]", getId(), getIndex(), getTakingDate(),
+                getReturnDate(),getNotes(),getSpecialNotes());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -135,39 +172,23 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (index != null ? !index.equals(product.index) : product.index != null) return false;
-        if (takingDate != null ? !takingDate.equals(product.takingDate) : product.takingDate != null) return false;
-        if (returnDate != null ? !returnDate.equals(product.returnDate) : product.returnDate != null) return false;
-        if (note != null ? !note.equals(product.note) : product.note != null) return false;
-        if (specialNotes != null ? !specialNotes.equals(product.specialNotes) : product.specialNotes != null)
+        if (getIndex() != null ? !getIndex().equals(product.getIndex()) : product.getIndex() != null) return false;
+        if (getTakingDate() != null ? !getTakingDate().equals(product.getTakingDate()) : product.getTakingDate() != null)
             return false;
-        if (takingEmployee != null ? !takingEmployee.equals(product.takingEmployee) : product.takingEmployee != null)
+        if (getReturnDate() != null ? !getReturnDate().equals(product.getReturnDate()) : product.getReturnDate() != null)
             return false;
-        if (returnEmployee != null ? !returnEmployee.equals(product.returnEmployee) : product.returnEmployee != null)
-            return false;
-        if (theme != null ? !theme.equals(product.theme) : product.theme != null) return false;
-        return metricNumber != null ? metricNumber.equals(product.metricNumber) : product.metricNumber == null;
+        if (getNotes() != null ? !getNotes().equals(product.getNotes()) : product.getNotes() != null) return false;
+        return getSpecialNotes() != null ? getSpecialNotes().equals(product.getSpecialNotes()) : product.getSpecialNotes() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = index != null ? index.hashCode() : 0;
-        result = 31 * result + (takingDate != null ? takingDate.hashCode() : 0);
-        result = 31 * result + (returnDate != null ? returnDate.hashCode() : 0);
-        result = 31 * result + (note != null ? note.hashCode() : 0);
-        result = 31 * result + (specialNotes != null ? specialNotes.hashCode() : 0);
-        result = 31 * result + (takingEmployee != null ? takingEmployee.hashCode() : 0);
-        result = 31 * result + (returnEmployee != null ? returnEmployee.hashCode() : 0);
-        result = 31 * result + (theme != null ? theme.hashCode() : 0);
-        result = 31 * result + (metricNumber != null ? metricNumber.hashCode() : 0);
+        int result = getIndex() != null ? getIndex().hashCode() : 0;
+        result = 31 * result + (getTakingDate() != null ? getTakingDate().hashCode() : 0);
+        result = 31 * result + (getReturnDate() != null ? getReturnDate().hashCode() : 0);
+        result = 31 * result + (getNotes() != null ? getNotes().hashCode() : 0);
+        result = 31 * result + (getSpecialNotes() != null ? getSpecialNotes().hashCode() : 0);
         return result;
-    }
-
-    public String toString() {
-        String empTaking = getTakingEmployee()==null?"":getTakingEmployee().getLastName()+getTakingEmployee().getFirstName();
-        String empReturned = getReturnEmployee()==null?"":getReturnEmployee().getLastName()+getReturnEmployee().getFirstName();
-        return String.format("Product[%d:%s:%03d:%tD:%s:%tD:%s:%s%n]", getId(),metricNumber.getName(), getIndex(), getTakingDate(),
-                empTaking, getReturnDate(), empReturned, theme.getTitle());
     }
 }

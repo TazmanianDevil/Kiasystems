@@ -1,12 +1,21 @@
 package ru.kiasystems.model.entity;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.io.Serializable;
 import ru.kiasystems.model.entity.Role;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="users")
-@NamedQuery(name="User.getAllUsers", query="SELECT u FROM User u")
+@NamedQueries({
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+@NamedQuery(name="User.findAllWithDetail", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles r"),
+@NamedQuery(name="User.findById", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles r WHERE u.id=:id"),
+@NamedQuery(name="User.findByUserName", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles r WHERE u.userName=:userName")
+})
 public class User implements Serializable{
 
     @Id
@@ -14,7 +23,7 @@ public class User implements Serializable{
     private Long id;
 
     @Column(name="username", length = 20, nullable = false)
-    private String username;
+    private String userName;
 
     @Column(name="password", length=32, nullable = false)
     private String password;
@@ -23,10 +32,16 @@ public class User implements Serializable{
 	@JoinTable(name="policies",
 		joinColumns=@JoinColumn(name="employee_id"),
 		inverseJoinColumns=@JoinColumn(name="role_id"))
-	private List<Role>roles;
+	private Set<Role> roles;
 		
-    public User(){}
+    protected User(){}
 
+    public User(Long id, String userName, String password) {
+        this.id = id;
+        this.userName=userName;
+        this.password = password;
+        roles = new HashSet<>();
+    }
     public Long getId() {
         return id;
     }
@@ -36,11 +51,11 @@ public class User implements Serializable{
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
     public String getPassword() {
@@ -51,17 +66,28 @@ public class User implements Serializable{
         this.password = password;
     }
 
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 	
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+    public void addRole(Role role) {
+        role.addUser(this);
+        getRoles().add(role);
+    }
+
+    public void removeRole(Role role) {
+        getRoles().remove(role);
+    }
+
     @Override
     public String toString () {
-        return "User["+id+":"+username+":"+password+"]";
+        return String.format("User[%d:%s:%s]%n", getId(), getUsername(), getPassword());
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

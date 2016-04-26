@@ -82,7 +82,7 @@ public class Employee implements Serializable {
 	
 	public String toString() {
 		return String.format("Employee: [%d:%s %s %s]%n", getId(),
-			getLastName(), getFirstName(), getLastName());
+			getLastName(), getFirstName(), getFatherName());
 	}
 
 	public User getUser() {

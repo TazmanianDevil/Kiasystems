@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import java.util.Date;
 public class ProductEJBIT {
-    ProductEJB productEJB;
+/*    ProductEJB productEJB;
     MetricNumberEJB mnEJB;
     EmployeeEJB employeeEJB;
     ThemeEJB themeEJB;
@@ -50,5 +50,5 @@ public class ProductEJBIT {
             productEJB.deleteProduct(p);
             assertEquals(products.size(), productEJB.getAllProducts().size());
         }
-    }
+    }*/
 }

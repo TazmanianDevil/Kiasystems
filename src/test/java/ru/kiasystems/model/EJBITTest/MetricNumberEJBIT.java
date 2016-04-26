@@ -11,7 +11,7 @@ import ru.kiasystems.logic.beans.impl.MetricNumberEJB;
 import ru.kiasystems.model.entity.MetricNumber;
 
 public class MetricNumberEJBIT {
-    MetricNumberEJB mnEJB;
+/*    MetricNumberEJB mnEJB;
     @Test
     public void testMetricNumberEJB() throws Exception {
         try (EJBContainer ejbContainer = EJBContainer.createEJBContainer()) {
@@ -35,5 +35,5 @@ public class MetricNumberEJBIT {
             mnEJB.deleteMetricNumber(mn2);
             assertEquals(metricNumbers.size(), mnEJB.getAllMetricNumbers().size());
         }
-    }
+    }*/
 }
