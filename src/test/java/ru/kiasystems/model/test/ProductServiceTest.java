@@ -1,6 +1,5 @@
 package ru.kiasystems.model.test;
 
-import com.sun.xml.internal.ws.runtime.config.MetroConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -30,7 +29,7 @@ public class ProductServiceTest {
     private MetricNumberService metricNumberService;
     @Before
     public void setUp() {
-        context = new GenericXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new GenericXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         assertNotNull(context);
         themeService = context.getBean("jpaThemeService", ThemeService.class);
         assertNotNull(themeService);

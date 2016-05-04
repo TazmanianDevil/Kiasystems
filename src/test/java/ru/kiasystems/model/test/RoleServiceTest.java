@@ -1,7 +1,5 @@
 package ru.kiasystems.model.test;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -18,7 +16,7 @@ public class RoleServiceTest {
     private RoleService roleService;
     @Before
     public void setUp() {
-        context = new GenericXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new GenericXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         assertNotNull("Context cannot be null", context);
         roleService = context.getBean("jpaRoleService", RoleService.class);
         assertNotNull("RoleService cannot be null", roleService);

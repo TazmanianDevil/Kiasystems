@@ -17,7 +17,7 @@ public class ThemeServiceTest {
     ThemeService themeService;
     @Before
    public  void setUp() {
-        context = new ClassPathXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new ClassPathXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         assertNotNull("Context cannot be null");
         themeService = context.getBean("jpaThemeService", ThemeService.class);
         assertNotNull("ThemeService cannot be null");

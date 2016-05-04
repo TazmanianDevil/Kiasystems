@@ -3,9 +3,7 @@ package ru.kiasystems.model.test;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.data.geo.Metric;
 import ru.kiasystems.logic.spring.beans.dao.MetricNumberImageService;
-import ru.kiasystems.model.entity.MetricNumber;
 import ru.kiasystems.model.entity.MetricNumberImage;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class MetricNumberImageServiceTest {
 
     @Before
     public void setUp() {
-        context = new GenericXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new GenericXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         metricNumberImageService = context.getBean("jpaMetricNumberImageService", MetricNumberImageService.class);
         MetricNumberImage mni = new MetricNumberImage(1L, new byte[] {1,2,3,4});
         metricNumberImageService.save(mni);

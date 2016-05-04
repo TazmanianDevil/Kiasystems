@@ -20,7 +20,7 @@ public class RoleUserServicesTest {
 
     @Before
     public void setUp() {
-        context = new GenericXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new GenericXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         assertNotNull(context);
         roleService = context.getBean("jpaRoleService", RoleService.class);
         assertNotNull(roleService);

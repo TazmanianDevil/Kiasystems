@@ -17,7 +17,7 @@ public class EmployeeServiceTest {
     private DepartmentService departmentService;
     @Before
     public void setUp() {
-        context = new ClassPathXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new ClassPathXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         assertNotNull("Context cannot be null");
         employeeService = context.getBean("jpaEmployeeService", EmployeeService.class);
         assertNotNull("employeeService cannot be null", employeeService);

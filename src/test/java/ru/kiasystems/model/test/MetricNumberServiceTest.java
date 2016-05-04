@@ -3,7 +3,6 @@ package ru.kiasystems.model.test;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.data.geo.Metric;
 import ru.kiasystems.logic.spring.beans.dao.MetricNumberService;
 import ru.kiasystems.model.entity.MetricNumber;
 
@@ -21,7 +20,7 @@ public class MetricNumberServiceTest {
 
     @Before
     public void setUp() {
-        context = new GenericXmlApplicationContext("META-INF/Spring/app-context.xml");
+        context = new GenericXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         assertNotNull(context);
         metricNumberService = context.getBean("jpaMetricNumberService", MetricNumberService.class);
         assertNotNull(metricNumberService);

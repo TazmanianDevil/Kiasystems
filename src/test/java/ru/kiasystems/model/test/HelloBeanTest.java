@@ -9,7 +9,7 @@ public class HelloBeanTest {
 
     @Test
     public void testHelloBean() {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/Spring/app-context.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/Spring/datasource-tx-jpa.xml");
         context.getBean(HelloBean.class).sayHello();
     }
 }
