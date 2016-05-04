@@ -40,7 +40,7 @@ public class RoleServiceTest {
             System.out.println(role);
             assertNotNull("Role user's list cannot be null", role.getUsers());
             System.out.println(role.getUsers());
-        };
+        }
     }
 
     @Test
@@ -63,7 +63,7 @@ public class RoleServiceTest {
 
     @Test
     public void testSaveUpdateAndDeleteWithoutUsers() {
-        System.out.println("<---------------- SAVE, UPDATE AND DELETAE ROLE ------------->");
+        System.out.println("<---------------- SAVE, UPDATE AND DELETE ROLE ------------->");
         System.out.println(roleService.findAll());
         Role role = new Role("Test role", "Test description");
         roleService.save(role);

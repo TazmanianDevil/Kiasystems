@@ -51,11 +51,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     @Transactional(readOnly = true)
     public Department findByAbbreviation(String abbreviation) {
-        List<Department> departments = em.createNamedQuery("Department.findByAbbreviation", Department.class).setParameter("abbreviation", abbreviation).getResultList();
-        if (departments.isEmpty())
-            return null;
-        else
-            return departments.get(0);
+        Department department = em.createNamedQuery("Department.findByAbbreviation", Department.class).setParameter("abbreviation", abbreviation).getSingleResult();
+        return department;
     }
 
     @Override

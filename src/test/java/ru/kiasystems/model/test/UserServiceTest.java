@@ -48,8 +48,8 @@ public class UserServiceTest {
     @Test
     public void testFindById() {
         System.out.println("<-------------- FIND ADMIN USER BY ID ------------->");
-        User user = userService.findById(1L);
-        assertNotNull("Admin user presents in database", user);
+        User user = userService.findById(2L);
+        assertNotNull("Andrievskij user presents in database", user);
         System.out.println(user);
         System.out.println(user.getRoles());
     }

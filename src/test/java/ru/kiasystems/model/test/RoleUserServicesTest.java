@@ -42,8 +42,8 @@ public class RoleUserServicesTest {
         assertNotNull(user.getId());
         System.out.println(roleService.findAll());
         System.out.println(userService.findAll());
-        roleService.delete(role);
         userService.delete(user);
+        roleService.delete(role);
         System.out.println(roleService.findAll());
         System.out.println(userService.findAll());
     }
@@ -59,8 +59,6 @@ public class RoleUserServicesTest {
         Role role = new Role("Test role", "Test description");
         role.getUsers().add(user);
         roleService.save(role);
-//        assertNotNull(role.getId());
-//        assertNotNull(user.getId());
         System.out.println(roleService.findAll());
         System.out.println(userService.findAll());
         userService.delete(user);

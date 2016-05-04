@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapping>
+    <class name="ru.kiasystems.model.restful.entities.Themes">
+        <field name="themes" type="ru.kiasystems.model.entity.Theme" collection="arraylist">
+            <bind-xml name="Theme" />
+        </field>
+    </class>
+    <class name="ru.kiasystems.model.entity.Theme" identity="id">
+        <map-to xml="contact" />
+        <field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>
+        <field name="title" type="string">
+            <bind-xml name="title" node="element"/>
+        </field>
+        <!--<field name="startDate" type="string" handler="dateHandler">-->
+        <field name="startDate" type="date">
+            <bind-xml name="startDate" node="element"/>
+        </field>
+        <!--<field name="closeDate" type="string" handler="dateHandler">-->
+        <field name="closeDate" type="date">
+            <bind-xml name="closeDate" node="element"/>
+        </field>
+    </class>
+    <!--<field-handler name="dateHandler" class="ru.kiasystems.logic.utils.DateTimeFieldHandler">-->
+        <!--<param name="date-format" value="yyyy-MM-dd" />-->
+    <!--</field-handler>-->
+</mapping>
