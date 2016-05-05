@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       ">
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+                    <property name="marshaller" ref="castorMarshaller"></property>
+                    <property name="unmarshaller" ref="castorMarshaller"/>
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <bean class="org.springframework.http.MediaType">
+                                <constructor-arg index="0" value="application"/>
+                                <constructor-arg index="1" value="xml"/>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+        <property name="mappingLocation"
+                  value="classpath:META-INF/Spring/oxm-mapping.xml"/>
+    </bean>
+</beans>

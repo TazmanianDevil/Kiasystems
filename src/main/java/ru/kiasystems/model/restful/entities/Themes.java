@@ -19,4 +19,11 @@ public class Themes implements Serializable{
     public void setThemes(List<Theme> themes) {
         this.themes = themes;
     }
+
+    @Override
+    public String toString() {
+        return "Themes{" +
+                "themes=" + themes +
+                '}';
+    }
 }
