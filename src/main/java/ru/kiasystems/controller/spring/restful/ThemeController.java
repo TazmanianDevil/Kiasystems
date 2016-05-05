@@ -2,6 +2,7 @@ package ru.kiasystems.controller.spring.restful;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kiasystems.logic.spring.beans.dao.ThemeService;
@@ -14,6 +15,7 @@ public class ThemeController {
     final Logger logger = org.slf4j.LoggerFactory.getLogger(ThemeController.class);
 
     @Autowired
+    @Qualifier("jpaThemeService")
     private ThemeService themeService;
 
     @RequestMapping(value = "/listdata", method = RequestMethod.GET)

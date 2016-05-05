@@ -9,7 +9,9 @@ import ru.kiasystems.model.restful.entities.Themes;
 
 import java.util.Date;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class ThemeRestServiceTest {
     private static final String URL_GET_ALL_THEMES =
@@ -42,6 +44,7 @@ public class ThemeRestServiceTest {
     public void testThemeFindById() {
         System.out.println("<-------------- GET THEME WITH ID 1 ------------>");
         Theme theme = restTemplate.getForObject(URL_GET_THEME_BY_ID, Theme.class, 1L);
+        assertNotNull(theme);
         System.out.println(theme);
     }
 
@@ -50,15 +53,23 @@ public class ThemeRestServiceTest {
         System.out.println("<---------------INSERT, UPDATE AND DELETE NEW THEME --------->");
         Theme theme = new Theme("Test theme", new Date(), new Date());
         theme = restTemplate.postForObject(URL_CREATE_THEME, theme, Theme.class);
+        assertNotNull(theme.getId());
         System.out.println("Theme was successfully posted: " + theme);
-
-        //theme = restTemplate.getForObject(URL_GET_THEME_BY_ID, Theme.class, theme.getId());
-        theme.setTitle("New test theme");
-        restTemplate.put(URL_UPDATE_THEME, theme, theme.getId());
+        Theme newTheme = restTemplate.getForObject(URL_GET_THEME_BY_ID, Theme.class, theme.getId());
+        assertEquals(newTheme.getId(), theme.getId());
+        assertEquals(newTheme.getTitle(), theme.getTitle());
+        newTheme.setTitle("New test theme");
+        restTemplate.put(URL_UPDATE_THEME, newTheme, newTheme.getId());
         Themes themes = restTemplate.getForObject(URL_GET_ALL_THEMES, Themes.class);
         System.out.println(themes);
-
         restTemplate.delete(URL_DELETE_THEME, theme.getId());
         System.out.println(themes = restTemplate.getForObject(URL_GET_ALL_THEMES, Themes.class));
+    }
+
+    @Test(expected = org.springframework.web.client.HttpServerErrorException.class)
+    public void testFindNonexistentTheme() {
+        System.out.println("<-------------FIND THEME WITH ID 99999-------------------->");
+        Theme theme = restTemplate.getForObject(URL_GET_THEME_BY_ID, Theme.class, 99999);
+
     }
 }
