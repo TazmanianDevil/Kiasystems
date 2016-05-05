@@ -52,12 +52,13 @@ public class ThemeRestServiceTest {
         theme = restTemplate.postForObject(URL_CREATE_THEME, theme, Theme.class);
         System.out.println("Theme was successfully posted: " + theme);
 
+        //theme = restTemplate.getForObject(URL_GET_THEME_BY_ID, Theme.class, theme.getId());
         theme.setTitle("New test theme");
         restTemplate.put(URL_UPDATE_THEME, theme, theme.getId());
         Themes themes = restTemplate.getForObject(URL_GET_ALL_THEMES, Themes.class);
         System.out.println(themes);
 
         restTemplate.delete(URL_DELETE_THEME, theme.getId());
-        System.out.println(restTemplate.getForObject(URL_GET_ALL_THEMES, Themes.class));
+        System.out.println(themes = restTemplate.getForObject(URL_GET_ALL_THEMES, Themes.class));
     }
 }
