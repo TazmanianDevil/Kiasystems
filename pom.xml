@@ -151,6 +151,18 @@
             <version>2.7.4</version>
         </dependency>
 <!--end of REST dependencies-->
+    <!-- Зависимости для модульного тестирования -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.0.2.RELEASE</version>
+        </dependency>
+    <!-- Конец зависимостей модульного тестирования -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
