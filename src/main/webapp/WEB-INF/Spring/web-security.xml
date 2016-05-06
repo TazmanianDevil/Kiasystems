@@ -10,6 +10,7 @@
     <http pattern="/restful/**" create-session="stateless">
         <intercept-url pattern="/**" access="hasRole('ROLE_REMOTE')"/>
         <http-basic/>
+        <csrf disabled="true"/>
     </http>
     <authentication-manager>
     <authentication-provider >
