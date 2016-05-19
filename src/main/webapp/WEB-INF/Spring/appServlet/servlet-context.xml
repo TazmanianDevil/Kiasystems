@@ -14,24 +14,11 @@
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
     <annotation-driven/>
-    <resources mapping="/resources/**" location="/, classpath:/META-INF/web-resources/"/>
+    <resources mapping="/resources/**" location="/resources/"/>
     <default-servlet-handler/>
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
         <beans:property name="prefix" value="/WEB-INF/views/"/>
-        <beans:property name="suffix" value=".jspx" />
+        <beans:property name="suffix" value=".jsp" />
     </beans:bean>
     <context:component-scan base-package="ru.kiasystems"/>
-    <interceptors>
-        <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/>
-        <!--<beans:bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />-->
-    </interceptors>
-    <beans:bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-                id="messageSource" p:basenames="WEB-INF/i18n/messages, WEB-INF/i18n/application"
-                p:fallbackToSystemLocale="false"/>
-    <beans:bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
-                id="localeResolver" p:cookieName="locale"/>
-    <!--<beans:bean class="org.springframework.ui.context.support.ResourceBundleThemeSource" id="themeSource"/>-->
-    <!--<beans:bean class="org.springframework.web.servlet.theme.CookieThemeResolver" id="themeResolver"-->
-                <!--p:cookieName="theme" p:defaultThemeName="standard" />-->
 </beans:beans>
