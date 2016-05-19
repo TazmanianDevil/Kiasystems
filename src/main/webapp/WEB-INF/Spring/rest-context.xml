@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
        ">
 
-    <import resource="root-context.xml"/>
+    <!--<import resource="root-context.xml"/>-->
 
     <mvc:annotation-driven>
         <mvc:message-converters>
