@@ -13,9 +13,6 @@ import ru.kiasystems.model.entity.Theme;
 
 import java.util.List;
 
-/**
- * Created by Musin on 19.05.2016.
- */
 @RequestMapping("/themes")
 @Qualifier("themeControllerMVC")
 @Controller

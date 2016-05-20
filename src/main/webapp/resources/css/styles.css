@@ -1,0 +1,152 @@
+body {
+	font-family: Arial,Helvetica,sans-serif;
+	background: transparent none repeat scroll 0px 0px;
+	border: 0px none;
+	
+}
+
+#header {
+	display: block;
+	margin: 0px auto;
+	background: #5B6889 none repeat scroll 0% 0%;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-left: 50px;
+	padding-right: 50px;
+	overflow: hidden;
+}
+img#logo{
+	float: left;
+}
+p#headAddress{
+	font-size: 110%;
+	font-family: sans-serif;
+	text-align: right;
+	color: #FFF;
+}
+
+p#headPhone{
+	font-size: 110%;
+	font-family: sans-serif;
+	text-align: right;
+	color: #FFF;
+}
+
+#navbar {
+	font-family: sans-serif;
+	font-size: medium;
+	background: #5B6889 none repeat scroll 0% 0%;
+	float:left;
+	margin-top: 10px;
+	color: #FFF;
+	font-weight: bold;
+	padding-right: 15px;
+	margin-right: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: #FFF;
+	
+}
+a:hover {
+	text-decoration: underline;
+	/*text-decoration-line: double;*/
+}
+
+.menu ul {
+	display: none;
+}
+	
+.menu li:hover ul{
+	display:block;
+}
+
+.constructormenu {
+	list-style: url(../imgs/cons.png);
+}
+
+.centralElement {
+	margin-left: 20%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#main {
+	padding: 5px 15px 5px 5px;
+	margin-left: 210px;
+	font-weight: bold;
+}
+
+#main table {
+	border: 1px solid black;
+	margin-top: 20px;
+}
+
+
+#main table th {
+	font-size: 16px;
+	border-bottom: 1px solid #FFF;
+	padding: 8px;
+	background: rgb(91, 104, 137) none repeat scroll 0% 0%;
+	color: rgb(255, 255, 255);
+	border-top: 4px solid rgb(91, 104, 137);
+	font-weight: bold;
+}
+#main table td {
+	background: #E8EDFF none repeat scroll 0% 0%;
+	border-bottom: 1px solid #FFF;
+	color: #6E65A8;
+	border-top: 1px solid transparent;
+	padding: 8px;
+	font-size: 14px;
+}
+
+#main table tr:hover td {
+	background: #ccddff;
+}
+
+.addbutton{
+	text-decoration:none; 
+	text-align:center; 
+	padding:11px 12px; 
+	border:solid 1px #5b6889; 
+	border-radius:4px;
+	font:16px Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color:#FFF; 
+	background-color:#5b6889; 
+}
+
+#tableLink {
+	color: #6E65A8;
+	text-decoration: none;
+}
+
+#tableLink:hover {
+	color: #6E65A8;
+	text-decoration: underline;
+}
+
+.rightButton {
+	float: right;
+	margin-top: 20px;
+	text-decoration:none; 
+	text-align:center; 
+	padding:5px 5px; 
+	border:solid 1px #5b6889; 
+	border-radius:4px;
+	font:16px Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color:#FFF; 
+	background-color:#5b6889; 
+}
+
+#journalFilter {
+	width: 400px;
+	margin-left: 20px;
+}
+
+table#journalTable {
+	margin-left: 20px;
+	margin-top: 90px;
+}
