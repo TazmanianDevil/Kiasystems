@@ -21,4 +21,11 @@
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
     <context:component-scan base-package="ru.kiasystems"/>
+    <interceptors>
+        <beans:bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
+    </interceptors>
+
+    <beans:bean class="org.springframework.ui.context.support.ResourceBundleThemeSource" id="themeSource"/>
+    <beans:bean class="org.springframework.web.servlet.theme.CookieThemeResolver" id="themeResolver"
+                p:cookieName="theme" p:defaultThemeName="kia"/>
 </beans:beans>

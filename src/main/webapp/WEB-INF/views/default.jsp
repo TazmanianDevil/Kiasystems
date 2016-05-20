@@ -9,8 +9,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<%--<link rel="stylesheet" type="text/css" href="/css/styles.css" />--%>
-		<spring:url value="/resources/css/kia.css" var="mainCss"/>
-		<link href="${mainCss}" rel="stylesheet"/>
+		<%--<spring:url value="/resources/css/kia.css" var="mainCss"/>--%>
+		<%--<link href="${mainCss}" rel="stylesheet"/>--%>
+		<spring:theme code="styleSheet" var="app_css"/>
+		<spring:url value="/${app_css}" var="app_css_url"/>
+		<link rel="stylesheet" type="text/css" href="${app_css_url}" media="screen"/>
 		<title>ЗАО "КИА Системы". Внутренний портал компании</title>
 	</head>
 	<body>
