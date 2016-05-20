@@ -109,9 +109,13 @@ body {
   display: block;
   padding-left: 10px;
   padding-right: 10px;
-  width: 250px;
+  width: 270px;
 }
 
 .main-menu ul ul li:hover {
   background-color:  #5B6889;
+}
+
+.main-menu ul ul li:active {
+  background-color:  #4D5467;
 }
