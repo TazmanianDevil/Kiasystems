@@ -17,8 +17,8 @@
 		<title>ЗАО "КИА Системы". Внутренний портал компании</title>
 	</head>
 	<body>
-		<%@ include file="/templates/header.jsp" %>
-		<%@ include file="/templates/navbar.jsp" %>
+		<%@ include file="header.jsp" %>
+		<%@ include file="navbar.jsp" %>
 		
 		<div id = "main-content">
 			<div class="container">
