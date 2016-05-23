@@ -1,6 +1,8 @@
 package ru.kiasystems.logic.spring.beans.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 @Service("jpaThemeService")
 @Transactional
+@Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Repository
 public class ThemeServiceImpl implements ThemeService {
     @PersistenceContext

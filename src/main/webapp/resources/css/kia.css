@@ -8,10 +8,12 @@ body {
   color: #000000;
 }
 
+
 .container {
   width: 980px;
   margin: 0 auto;
   padding: 0 10px;
+  position: relative;
 }
 
 .main-header {
@@ -58,7 +60,12 @@ body {
 .btn:active {
   opacity: 0.3;
 }
-
+.theme-btn {
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
 .menu {
   margin-bottom: 10px;
 }
@@ -102,8 +109,7 @@ body {
 .main-menu ul li {
   display: inline-block;
   position: relative;
-  /*margin-right: 20px;*/
-}
+  }
 
 .main-menu ul ul li {
   display: block;
@@ -118,4 +124,47 @@ body {
 
 .main-menu ul ul li:active {
   background-color:  #4D5467;
+}
+
+.main-content {
+  margin-bottom:10px;
+}
+
+table {
+  border: 1px solid black;
+  width: 100%;
+}
+
+table th {
+  font-size: 16px;
+  border-bottom: 1px solid #FFF;
+  padding: 8px;
+  background: rgb(91, 104, 137) none repeat scroll 0% 0%;
+  color: rgb(255, 255, 255);
+  border-top: 4px solid rgb(91, 104, 137);
+  font-weight: bold;
+}
+
+table td {
+  background: #E8EDFF none repeat scroll 0% 0%;
+  border-bottom: 1px solid #FFF;
+  color: #6E65A8;
+  border-top: 1px solid transparent;
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+table tr:hover td {
+  background: #ccddff;
+}
+
+.items-table td a {
+  color: #6E65A8;
+  text-decoration: none;
+
+}
+.items-table td a:hover {
+  color: #6E65A8;
+  text-decoration: underline;
 }

@@ -28,7 +28,7 @@
         </beans:property>
         <beans:property name="order" value="0"/>
     </beans:bean>
-    <context:component-scan base-package="ru.kiasystems"/>
+    <context:component-scan base-package="ru.kiasystems.controller.spring.mvc"/>
     <interceptors>
         <beans:bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
     </interceptors>

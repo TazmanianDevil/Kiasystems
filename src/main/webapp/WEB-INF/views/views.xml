@@ -5,4 +5,19 @@
     <definition extends="base.definition" name="welcome">
         <put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/>
     </definition>
+    <definition extends="base.definition" name="metricnumbers/list">
+        <put-attribute name="body" value="/WEB-INF/views/metricnumbers/metricnumbers.jsp"/>
+    </definition>
+    <definition extends="base.definition" name="themes/list">
+        <put-attribute name="body" value="/WEB-INF/views/themes/list.jsp"/>
+    </definition>
+    <definition extends="base.definition" name="themes/show">
+        <put-attribute name="body" value="/WEB-INF/views/themes/show.jsp"/>
+    </definition>
+    <definition name="themes/update" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/views/themes/edit.jsp"/>
+    </definition>
+    <definition name="themes/create" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/views/themes/edit.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -8,11 +8,12 @@
     <artifactId>Kia</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <!--<properties>-->
+    <properties>
+        <!--<jetty-version>9.3.10.v20160621</jetty-version>-->
         <!--<hibernate-version>5.0.1.Final</hibernate-version>-->
         <!--<spring-framework-version>4.1.5.RELEASE</spring-framework-version>-->
         <!--<spring-data-version>Gosling-RELEASE</spring-data-version>-->
-    <!--</properties>-->
+    </properties>
     <!--<dependencyManagement>-->
         <!--<dependencies>-->
             <!--<dependency>-->
@@ -34,24 +35,9 @@
     <!--</dependencyManagement>-->
     <dependencies>
         <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-entitymanager</artifactId>-->
-            <!--<version>4.3.11.Final</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-jpa</artifactId>-->
-            <!--<version>2.0.8</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-jdbc</artifactId>-->
-            <!--<version>4.2.5.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate.javax.persistence</groupId>-->
-            <!--<artifactId>hibernate-jpa-2.1-api</artifactId>-->
-            <!--<version>1.0.0.Final</version>-->
+            <!--<groupId>org.eclipse.jetty</groupId>-->
+            <!--<artifactId>jetty-maven-plugin</artifactId>-->
+            <!--<version>${jetty-version}</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -80,7 +66,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>4.2.5.RELEASE</version>
+            <version>4.0.2.RELEASE</version>
         </dependency>
         <!--Процессор Jackson JSON для поддержки данных в формате JSON-->
         <dependency>
@@ -214,32 +200,6 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-failsafe-plugin</artifactId>-->
-                <!--<version>2.16</version>-->
-                <!--<configuration>-->
-                    <!--<skipTests>false</skipTests>-->
-                    <!--<skipITs>false</skipITs>-->
-
-                    <!--<includes>-->
-                        <!--<include>**/*IT.java</include>-->
-                    <!--</includes>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-
-                    <!--<execution>-->
-                        <!--<id>integration-test</id>-->
-                        <!--<goals>-->
-                            <!--<goal>-->
-                                <!--integration-test-->
-                            <!--</goal>-->
-                            <!--<goal>verify</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -268,9 +228,11 @@
                 <artifactId>tomcat-maven-plugin</artifactId>
                 <version>1.1</version>
                 <configuration>
-                    <server>Tomcat 9</server>
+                    <server>TomcatServer</server>
                     <url>http://localhost:8080/manager</url>
                     <path>/${project.artifactId}</path>
+                    <username>deploy</username>
+                    <password>deploy</password>
                 </configuration>
             </plugin>
         </plugins>

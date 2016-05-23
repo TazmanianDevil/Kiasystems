@@ -8,7 +8,7 @@
             <ul>
                 <li> <a href="#">Конструкторский отдел</a>
                     <ul class="constructor-menu">
-                        <li><a href="#">Таблица учета номеров</a></li>
+                        <li><a href="/Kiasystems/metricnumbers">Таблица учета номеров</a></li>
                         <li><a href="#">Архив</a></li>
                     </ul>
                 </li>
@@ -18,22 +18,14 @@
                         <li><a href="#">Меморандум</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Другое</a></li>
+                <li><a href="#">Другое</a>
+                    <ul class="other-menu">
+                        <li><a href="/Kiasystems/themes">Темы</a></li>
+                        <%--<li><a href="#"></a></li>--%>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
 </div>
-<%--<div id="navbar">--%>
-    <%--<ul class="menu">--%>
-        <%--<li> <a href="#">Конструкторский<br />отдел</a>--%>
-            <%--<ul class="constructormenu">--%>
-                <%--<li><a href="#">Таблица учета<br />номеров</a></li>--%>
-                <%--<c:if test="${pageContext.request.isUserInRole('Admin')}">--%>
-                    <%--<li><a href="#">Журнал таблицы учета<br />децимальных номеров</a></li>--%>
-                <%--</c:if>--%>
-            <%--</ul>--%>
-        <%--</li>--%>
-        <%--<li><a href="/Kiasystems">Отдел технического<br />контроля</a></li>--%>
-        <%--<li><a href="/Kiasystems">Другое</a></li>--%>
-    <%--</ul>--%>
-<%--</div>--%>
+
