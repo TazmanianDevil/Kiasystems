@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DefaultControllerMVC {
     @RequestMapping(method = RequestMethod.GET)
     public String showWelcome(Model uiModel) {
-        return "default";
+        return "welcome";
     }
 }
